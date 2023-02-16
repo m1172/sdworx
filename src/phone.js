@@ -24,10 +24,10 @@ import {
   RightLogoImg,
   Id,
   GeneralTitle,
-} from './style.js';
+} from './phoneStyle.js';
 import { MainContext } from './Context';
 
-export const Customers = () => {
+export const Phone = () => {
   const { data, setData } = useContext(MainContext);
   let datas = data;
 
@@ -41,56 +41,29 @@ export const Customers = () => {
         <ImgDiv>
           {' '}
           <LogoImg src={Logo} />
-          <RightLogoImg src={RightLogo} />
         </ImgDiv>
       </ImgDiv>
       <GeneralTitle>Attendees ({data.length})</GeneralTitle>
       <TableContainer>
         <Table>
-          <THead>
-            <Tr>
-              <Th>
-                <RowDiv style={{ marginLeft: '15px' }}>Name</RowDiv>
-              </Th>
-              <Th>
-                <RowDiv>DATE OF BIRTH</RowDiv>
-              </Th>
-              <Th>
-                <RowDiv>CITY</RowDiv>
-              </Th>
-              <Th>
-                <RowDiv>COUNTRY</RowDiv>
-              </Th>
-
-              <Th>
-                <Flex>
-                  <RowDiv>Action</RowDiv>
-                </Flex>
-              </Th>
-            </Tr>
-          </THead>
-
           {/* TableBody is starting here. */}
           <TBody>
             {data.map((value) => (
               <Tr key={value.id}>
                 <Td>
                   <RowDiv>
-                    <Id>{value.id}.</Id>
-                    <CustomerImg src={value.avatar} />
-                    <ColumnDiv>{value.name}</ColumnDiv>
+                    <ColumnDiv style={{ fontSize: '18px', fontWeight: 'bold' }}>
+                      {value.name}
+                    </ColumnDiv>
+                    <ColumnDiv style={{ width: '150px', marginTop: '5px' }}>
+                      {value.city}- {value.country}{' '}
+                    </ColumnDiv>
                   </RowDiv>
                 </Td>
-                <Td>
-                  <FashionTitle>{value.dateOfBirth}</FashionTitle>
-                </Td>
-                <Td>
-                  <FashionTitle>{value.city}</FashionTitle>
-                </Td>
-                <Td>{value.country}</Td>
 
                 <Td>
                   <IconDiv onClick={() => handleDelete(value.id)}>
+                    <Id>{value.dateOfBirth}</Id>
                     <Icon>
                       <Delete />
                     </Icon>
@@ -105,4 +78,4 @@ export const Customers = () => {
   );
 };
 
-export default Customers;
+export default Phone;
